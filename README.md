@@ -1,13 +1,22 @@
-This the the README for webproxy.c
+# This is a simple webproxy
 
-To compile the project enter,
-"gcc -lcrypto webproxy.c -o webproxy"
+#### Compilation
+```bash
+gcc -lcrypto webproxy.c -o webproxy
+```
 
-To run the proxy enter,
-"./webproxy <port> <timeout>"
-If a timeout is not given it will default to 60 seconds
-Port must match the port on your web browser
+#### Running
+```bash
+./webproxy <port> <timeout>
+```
+If a timeout is not given it will default to 60 seconds.
+You must setup your web browser to connect to localhost on the same port.
 
-Included is a blacklist file that can be used to block websites.
-Each host must be entered on a new line and follow the host format
-that is proved in a HTTP GET request
+Included is a blacklist file that can be used to block websites. Each host, or IP, must be entered on a new line and follow the host format that is given in a HTTP request.
+
+#### blacklist file example
+```
+www.apple.com
+www.google.com
+129.55.110.80
+```
