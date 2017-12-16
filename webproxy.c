@@ -243,11 +243,11 @@ int connectRemote(char* HOST, int client_sock) {
 		}
 	} else { // else read IP from cache
 		printf("Opening IP address from cache for %s\n", HOST);
-		char IP[15]; // max length of IPv4 is 15 characters
+		char IP[INET_ADDRSTRLEN]; // max length of IPv4 is 15 characters
 
 		strcat(cacheDir, HOST);
 		fd = open(cacheDir, O_RDONLY);
-		read(fd, IP, 15);
+		read(fd, IP, INET_ADDRSTRLEN);
 		close(fd);
 		printf("%s -> %s\n", HOST, IP);
 
