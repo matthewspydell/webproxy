@@ -353,7 +353,7 @@ int cached_and_timeout(char* host, char* path, int tout) {
 	time(&rawtime);
 	currentTime = localtime(&rawtime);
 	ltime = ((currentTime->tm_hour) << 12) | ((currentTime->tm_min)<<6) | (currentTime->tm_sec);
-	printf("Local time: %d\n", ltime);
+	printf("Local time: %d:%d:%d\n", currentTime->tm_hour, currentTime->tm_min, currentTime->tm_sec);
 
 	// build filename from path and host requested by client
 	strcat(filename, host);
@@ -376,7 +376,7 @@ int cached_and_timeout(char* host, char* path, int tout) {
 	// convert last access time into usable format <HHMMSS>
 	fileTime = localtime(&fileinfo.st_atime);
 	atime = ((fileTime->tm_hour) << 12) | ((fileTime->tm_min)<<6) | (fileTime->tm_sec);
-	printf("Last access time: %d\n", atime);
+	printf("Last access time: %d:%d:%d\n", fileTime->tm_hour, fileTime->tm_min, fileTime->tm_sec);
 
 	printf("Checking for file: %s...\n", filename);
 
