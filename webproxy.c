@@ -162,7 +162,7 @@ int clientHandler(int client_sock) {
 				printf("Sending data from cache...\n");
 
 				int fd, nbytes;
-				char filename[200];
+				char filename[200] = {0};
 				char hash[MD5_DIGEST_LENGTH * 2 + 1];
 
 				// construct filename based on requested file (path), from host
@@ -177,6 +177,7 @@ int clientHandler(int client_sock) {
 				memset(filename, 0, sizeof(filename));
 				strcpy(filename, "./cache/");
 				strcat(filename, hash);
+				printf("Opening: %s\n", filename);
 
 				if ((fd = open(filename, O_RDONLY)) < 0) {
 					printError(Could not open cached file);
